@@ -18,7 +18,7 @@ public class MouseControl : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            print("kok");
+            hit.collider.gameObject.GetComponent<IClickable>().ReactToClick();
         }
     }
 }
