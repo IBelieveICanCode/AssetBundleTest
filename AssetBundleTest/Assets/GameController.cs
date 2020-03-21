@@ -27,13 +27,16 @@ public class GameController : Singleton<GameController>
         GeometryObjectData geometryData = Resources.Load<GeometryObjectData>("Installers/GeometryObjectData");
         GeometryObjectModel asset = assetBundleManager.FindMyAssetFromBundle(geometryData);
         if (asset != null)
+        {
             Instantiate(asset);
-
-        GameData gameData = Resources.Load<GameData>("Installers/GameData");
-        timer = new Timer(gameData.ObservableTime, asset.ChangeColor);
-        print("Time to change color: " + gameData.ObservableTime);
-        print("Min click count:" + asset.ClickData.MinClicksCount);
-        print("Max click count:" + asset.ClickData.MaxClicksCount);
-        timer.Restart();
+            GameData gameData = Resources.Load<GameData>("Installers/GameData");
+            timer = new Timer(gameData.ObservableTime, asset.ChangeColor);
+            print("Time to change color: " + gameData.ObservableTime);
+            print("Min click count:" + asset.ClickData.MinClicksCount);
+            print("Max click count:" + asset.ClickData.MaxClicksCount);
+            timer.Restart();
+        }
+        else
+            print("Asset doesn't exist in loaded bundle");
     }
 }
