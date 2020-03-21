@@ -18,6 +18,7 @@ public class GeometryObjectModel : MonoBehaviour, IClickable {
         ClickCount++;
         if (ClickCount > ClickData.MinClicksCount && ClickCount < ClickData.MaxClicksCount)
         {
+            print("Clicks on object: " + ClickCount);
             ChangeColor(ClickData.Color);
         }
     }

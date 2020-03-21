@@ -30,6 +30,9 @@ public class GameController : Singleton<GameController>
 
         GameData gameData = Resources.Load<GameData>("Installers/GameData");
         timer = new Timer(gameData.ObservableTime, asset.ChangeColor);
+        print("Time to change color: " + gameData.ObservableTime);
+        print("Min click count:" + asset.ClickData.MinClicksCount);
+        print("Max click count:" + asset.ClickData.MaxClicksCount);
         timer.Restart();
     }
 

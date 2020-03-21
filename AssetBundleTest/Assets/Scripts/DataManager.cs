@@ -27,10 +27,11 @@ public class DataManager : MonoBehaviour
     }
     #endif
 
-public void Load()
+    public void Load()
     {
         PlayerData = new PlayerData();
         string json = ReadFromFile(file);
+        print("json: " + json);
         JsonUtility.FromJsonOverwrite(json, PlayerData);
     }
 
