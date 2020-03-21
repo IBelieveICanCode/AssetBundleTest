@@ -8,7 +8,8 @@ public class BundleBuilder : Editor
     [MenuItem("Assets/BuildAssets")]
     static void BuildAllAssets()
     {
-        BuildPipeline.BuildAssetBundles(@"C:\Users\Sergey\RepositoryForMyGames\AssetBundleTest\AssetBundleTest\Assets\Resources", 
+        BuildPipeline.BuildAssetBundles(Application.persistentDataPath, 
             BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.StandaloneWindows64);
+        GameController.Instance.SaveInfoAboutAssetBundles();
     }
 }

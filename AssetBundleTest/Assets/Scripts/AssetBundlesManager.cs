@@ -10,7 +10,7 @@ public class AssetBundlesManager : MonoBehaviour
 
     public void LoadAssetBundle(string assetBundle)
     {
-        myLoadedAssetBundle = AssetBundle.LoadFromFile(path + assetBundle);
+        myLoadedAssetBundle = AssetBundle.LoadFromFile(Application.persistentDataPath + "/" + assetBundle);
         Debug.Log(myLoadedAssetBundle == null ? "Failed to Load" : "Asset Loaded");
     }
 

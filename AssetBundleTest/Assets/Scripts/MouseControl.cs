@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class MouseControl : MonoBehaviour
 {
+    bool spawned = true;
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && spawned)
         {
-            CheckFigures();
+            GameController.Instance.InitFigure();
+            spawned = false;            
         }
-	}
+        if (Input.GetMouseButtonDown(0))
+            CheckFigures();
+    }
 
     void CheckFigures()
     {

@@ -15,18 +15,19 @@ public class DataManager : MonoBehaviour
        WriteForFile(file, json);
     }
 
+    #if UNITY_EDITOR
     public void SaveAssetBundles()
     {
         var names = AssetDatabase.GetAllAssetBundleNames();
         foreach (string name in names)
         {
             PlayerData.AssetNames.Add(name);
-        }            
+        }
         Save();
     }
+    #endif
 
-
-    public void Load()
+public void Load()
     {
         PlayerData = new PlayerData();
         string json = ReadFromFile(file);

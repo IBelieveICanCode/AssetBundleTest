@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameController : Singleton<GameController>
 {
+    Timer timer;
     ClickColorData clickData;
     [SerializeField]
     private AssetBundlesManager assetBundleManager;
@@ -13,11 +14,10 @@ public class GameController : Singleton<GameController>
 
     private void Awake()
     {
-        InitFigure();
+        //InitFigure();
     }
     public void InitFigure()
     {
-        //DataManager.SaveAssetBundles();
         DataManager.Load();
         List<string> _assetNames = DataManager.PlayerData.AssetNames;
         int random = Random.Range(0, _assetNames.Count);
@@ -29,7 +29,12 @@ public class GameController : Singleton<GameController>
             Instantiate(asset);
 
         GameData gameData = Resources.Load<GameData>("Installers/GameData");
-        asset.GameData = gameData;
-        asset.Init();
+        timer = new Timer(gameData.ObservableTime, asset.ChangeColor);
+        timer.Restart();
+    }
+
+    public void SaveInfoAboutAssetBundles()
+    {
+        DataManager.SaveAssetBundles();
     }
 }

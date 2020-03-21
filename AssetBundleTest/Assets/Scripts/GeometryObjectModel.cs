@@ -4,28 +4,15 @@ using UnityEngine;
 
 public class GeometryObjectModel : MonoBehaviour, IClickable {
 
-    Timer timer;
-    MeshRenderer mesh;
+    [SerializeField]
     Material mat;
 
     [HideInInspector]
     public ClickColorData ClickData;
-    [HideInInspector]
-    public GameData GameData;
+    [SerializeField]
     int ClickCount;
     Color CubeColor;
 
-    void Awake () {
-        mesh = GetComponent<MeshRenderer>();
-        mat = mesh.material;
-    }
-
-
-    public void Init()
-    {
-        timer = new Timer(GameData.ObservableTime, ChangeColor);
-        timer.Restart();
-    }
     public void ReactToClick()
     {
         ClickCount++;
@@ -34,18 +21,15 @@ public class GeometryObjectModel : MonoBehaviour, IClickable {
             ChangeColor(ClickData.Color);
         }
     }
-    void Update()
-    {
-        mat.color = CubeColor;
-    }
-
-    void ChangeColor()
-    {
+    public void ChangeColor()
+    {        
         CubeColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+        mat.color = CubeColor;
     }
 
     void ChangeColor(Color color)
     {
         CubeColor = color;
+        mat.color = CubeColor;
     }
 }
