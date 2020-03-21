@@ -10,6 +10,5 @@ public class BundleBuilder : Editor
     {
         BuildPipeline.BuildAssetBundles(Application.persistentDataPath, 
             BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.StandaloneWindows64);
-        GameController.Instance.SaveInfoAboutAssetBundles();
     }
 }

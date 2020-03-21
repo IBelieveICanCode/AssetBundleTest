@@ -14,7 +14,8 @@ public class GameController : Singleton<GameController>
 
     private void Awake()
     {
-        //InitFigure();
+        //Only after loading a new bundles
+        //DataManager.SaveAssetBundles();
     }
     public void InitFigure()
     {
@@ -34,10 +35,5 @@ public class GameController : Singleton<GameController>
         print("Min click count:" + asset.ClickData.MinClicksCount);
         print("Max click count:" + asset.ClickData.MaxClicksCount);
         timer.Restart();
-    }
-
-    public void SaveInfoAboutAssetBundles()
-    {
-        DataManager.SaveAssetBundles();
     }
 }
