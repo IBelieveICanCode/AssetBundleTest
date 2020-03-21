@@ -6,7 +6,6 @@ using System.IO;
 public class AssetBundlesManager : MonoBehaviour
 {
     AssetBundle myLoadedAssetBundle;
-    public string path;
 
     public void LoadAssetBundle(string assetBundle)
     {
