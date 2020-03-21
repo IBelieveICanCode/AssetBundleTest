@@ -2,22 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEditor;
 
 public class DataManager : MonoBehaviour
 {
-    //public ObjectData Data;
-    public string file = "player.txt";
+    public PlayerData PlayerData;
+    private string file = "figureData.txt";
+
     public void Save()
     {
-       // string json = JsonUtility.ToJson(Data);
-        //WriteForFile(file, json);
+       string json = JsonUtility.ToJson(PlayerData);
+       WriteForFile(file, json);
     }
+
+    public void SaveAssetBundles()
+    {
+        var names = AssetDatabase.GetAllAssetBundleNames();
+        foreach (string name in names)
+        {
+            PlayerData.AssetNames.Add(name);
+        }            
+        Save();
+    }
+
 
     public void Load()
     {
-       // Data = new ObjectData();
+        PlayerData = new PlayerData();
         string json = ReadFromFile(file);
-        //JsonUtility.FromJsonOverwrite(json, Data);
+        JsonUtility.FromJsonOverwrite(json, PlayerData);
     }
 
     private void WriteForFile(string fileName, string json)
@@ -50,4 +63,10 @@ public class DataManager : MonoBehaviour
     {
         return Application.persistentDataPath + "/" + fileName;
     }
+}
+
+[System.Serializable]
+public class PlayerData
+{
+    public List<string> AssetNames;
 }

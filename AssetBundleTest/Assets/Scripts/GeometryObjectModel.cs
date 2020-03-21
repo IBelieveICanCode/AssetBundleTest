@@ -8,37 +8,44 @@ public class GeometryObjectModel : MonoBehaviour, IClickable {
     MeshRenderer mesh;
     Material mat;
 
+    [HideInInspector]
+    public ClickColorData ClickData;
+    [HideInInspector]
+    public GameData GameData;
     int ClickCount;
     Color CubeColor;
 
-	void Awake () {
-        timer = new Timer(1, ChangeColor);
+    void Awake () {
         mesh = GetComponent<MeshRenderer>();
         mat = mesh.material;
-	}
-
-    private void Start()
-    {
-        timer.Restart();
-        Init();
     }
 
-    private void Init()
+
+    public void Init()
     {
-        GeometryObjectData data = Resources.Load<GeometryObjectData>("Installers/GeometryObjectData");
-        int itemIndex = Random.Range(0, data.ClicksData.Count);
-        ClickColorData clickData = data.ClicksData[itemIndex];
-        gameObject.name = clickData.ObjectType;
+        timer = new Timer(GameData.ObservableTime, ChangeColor);
+        timer.Restart();
+    }
+    public void ReactToClick()
+    {
+        ClickCount++;
+        if (ClickCount > ClickData.MinClicksCount && ClickCount < ClickData.MaxClicksCount)
+        {
+            ChangeColor(ClickData.Color);
+        }
+    }
+    void Update()
+    {
+        mat.color = CubeColor;
     }
 
     void ChangeColor()
     {
-        mat.color = new Color(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+        CubeColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
     }
 
-    public void ReactToClick()
+    void ChangeColor(Color color)
     {
-        ClickCount++;
-        print(ClickCount);
+        CubeColor = color;
     }
 }

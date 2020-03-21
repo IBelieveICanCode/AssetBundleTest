@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,15 +13,15 @@ MonoBehaviour:
   m_Name: GeometryObjectData
   m_EditorClassIdentifier: 
   ClicksData:
-  - ObjectType: Cube
-    MinClicksCount: 4
-    MaxClicksCount: 10
-    Color: {r: 0.62207717, g: 0.22272162, b: 0.7264151, a: 1}
-  - ObjectType: Capsule
-    MinClicksCount: 2
-    MaxClicksCount: 8
-    Color: {r: 0.42833692, g: 0.8679245, b: 0.12691349, a: 1}
-  - ObjectType: Sphere
-    MinClicksCount: 6
-    MaxClicksCount: 9
-    Color: {r: 0, g: 1, b: 0.9720595, a: 1}
+  - objectType: Cube
+    minClicksCount: 5
+    maxClicksCount: 10
+    color: {r: 0.06549895, g: 1, b: 0, a: 1}
+  - objectType: Capsule
+    minClicksCount: 2
+    maxClicksCount: 7
+    color: {r: 0, g: 0.21920633, b: 1, a: 1}
+  - objectType: Sphere
+    minClicksCount: 10
+    maxClicksCount: 20
+    color: {r: 1, g: 0, b: 0, a: 1}
