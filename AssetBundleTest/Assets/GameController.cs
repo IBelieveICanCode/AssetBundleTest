@@ -15,7 +15,7 @@ public class GameController : Singleton<GameController>
     private void Awake()
     {
         //Only after loading a new bundles
-        //DataManager.SaveAssetBundles();
+        DataManager.SaveAssetBundles();
     }
     public void InitFigure()
     {
